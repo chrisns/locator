@@ -1,0 +1,38 @@
+version: "3"
+services:
+  locator:
+    networks:
+      - proxy
+    deploy:
+      replicas: 1
+      labels:
+        - com.df.notify=true
+        - com.df.distribute=true
+        - com.df.serviceDomain=locator.p.cns.me
+        - com.df.port.1=3002
+        - com.df.servicePath.1=/
+        - com.df.redirectWhenHttpProto=true
+        - com.df.xForwardedProto=true
+      restart_policy:
+        condition: any
+        delay: 5s
+      update_config:
+        parallelism: 1
+        delay: 10s
+        failure_action: pause
+        monitor: 60s
+        max_failure_ratio: 0.3
+    image: pinked/locator
+    environment:
+      - PEER_DISCOVERY_NAME=locator
+      - THRESHOLD=60
+      - LATITUDE=${LATITUDE}
+      - LONGTITUDE=${LONGTITUDE}
+      - SUBSCRIBE="owntracks/#"
+      - USER=${USER}
+      - PASS=${PASS}
+      - MQTT=${MQTT}
+
+networks:
+  proxy:
+    external: true
