@@ -9,8 +9,8 @@ services:
         - com.df.notify=true
         - com.df.distribute=true
         - com.df.serviceDomain=locator.p.cns.me
-        - com.df.port.1=3002
-        - com.df.servicePath.1=/
+        - com.df.port=3002
+        - com.df.servicePath=/
         - com.df.redirectWhenHttpProto=true
         - com.df.xForwardedProto=true
       restart_policy:
