@@ -25,7 +25,7 @@ services:
     image: pinked/locator
     environment:
       - PEER_DISCOVERY_NAME=locator
-      - THRESHOLD=60
+      - THRESHOLD=100
       - LATITUDE=${LATITUDE}
       - LONGTITUDE=${LONGTITUDE}
       - SUBSCRIBE=owntracks/#
