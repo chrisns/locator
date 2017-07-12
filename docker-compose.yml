@@ -10,6 +10,7 @@ services:
         - com.df.distribute=true
         - com.df.serviceDomain=locator.p.cns.me
         - com.df.port=3002
+        - com.df.httpsOnly=true
         - com.df.servicePath=/
         - com.df.redirectWhenHttpProto=true
         - com.df.xForwardedProto=true
