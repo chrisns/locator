@@ -1,22 +1,13 @@
 pipeline:
 
-#  test:
-#    image: node:alpine
-#    commands:
-#      - npm install -s
-#      - npm test
-
-  build:
-    image: docker:dind
-    commands:
-      - docker build -t pinked/locator:latest .
-      - docker login -u="chrisns" -p=${DOCKER_PASSWORD}
-      - docker push pinked/locator:latest
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
+  docker:
+    image: plugins/docker
+    repo: pinked/locator
+    secrets: [ docker_username, docker_password ]
 
   deploy:
     image: docker
+    secrets: [ LATITUDE, LONGTITUDE, SUBSCRIBE, USER, PASS, MQTT ]
     commands:
       - docker deploy --compose-file docker-compose.yml locator
     volumes:
