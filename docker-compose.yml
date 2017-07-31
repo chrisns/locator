@@ -13,7 +13,6 @@ services:
         - com.df.port=3002
         - com.df.httpsOnly=true
         - com.df.servicePath=/
-        - com.df.redirectWhenHttpProto=true
         - com.df.xForwardedProto=true
       restart_policy:
         condition: any
