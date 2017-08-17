@@ -18,6 +18,14 @@ const home = {latitude: LATITUDE, longitude: LONGTITUDE}
 
 client.on('connect', () => client.subscribe(SUBSCRIBE))
 
+client.on('connect', () => console.log("connected"))
+
+client.on('error', (error) => console.error(error))
+
+client.on('close', () => console.error("connection close"))
+
+client.on('offline', () => console.log("offline"))
+
 var response = {}
 
 client.on('message', function (topic, message) {
